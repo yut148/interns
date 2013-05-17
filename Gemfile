@@ -21,8 +21,9 @@ gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'i18n-js'
 
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'sprockets-rails', github: 'rails/sprockets-rails'  
+  gem 'sass-rails', git: 'git@github.com:rails/sass-rails.git'
+  gem 'coffee-rails', git: 'git@github.com:rails/coffee-rails.git'
   gem 'uglifier', '>= 1.0.3'
 end
 
