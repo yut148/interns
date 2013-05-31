@@ -1,0 +1,31 @@
+=ribbon_heading($ribbon_color: red, $ribbon_width: 400px, $ribbon_border_width: 30px, $ribbon_border_height: 30px)
+  position: relative
+  width: $ribbon_width
+  background: $ribbon_color
+  line-height: $ribbon_border_height * 2 !important
+  margin:
+    left: auto !important
+    right: auto !important
+  &:before,
+  &:after
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+    display: block
+    top: 0
+    border:
+      width: $ribbon_border_height $ribbon_border_width
+      style: solid
+      color: $ribbon_color
+  &:before
+    left: $ribbon_border_width * -1
+    border:
+      left-color: transparent
+  &:after
+    right: $ribbon_border_width * -1
+    border:
+      right-color: transparent
+
+.ribbon_heading
+  +ribbon_heading($blue)

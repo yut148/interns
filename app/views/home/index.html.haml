@@ -9,15 +9,17 @@
       I18n.locale = '#{I18n.locale}'
       I18n.fallbacks = true
   %body{class: "#{controller_name}_#{action_name}"}
-    #header
+    = render 'alert'
+    %header#header
+      = render 'nav'
+    #eyecatch
       .container
-        = render 'nav'
-        %h1= link_to t('256interns'), root_path
-        = render 'alert'
-    #header_img= image_tag '256intern_04.png'
+        aaaaa
     .container
       %article#what_is_intern
-        %h2= t('how_256interns_works')
+        %h2.ribbon3d_heading
+          %span
+            %span= t('how_256interns_works')
         %p
           = link_to 'インターンシップ', 'http://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%83%E3%83%97'
           とは、応募者は就業体験と職業訓練を得、企業は見込み社員と労働力を得る仕組みです。
@@ -73,7 +75,7 @@
         .inquiry
           = link_to 'mailto:info@fjord.jp' do
             = image_tag '256intern_31.png'
-    #footer
+    %footer#footer
       ©
       = link_to 'FJORD, LLC', 'http://fjord.jp'
-    = render 'fork_me'
+    // = render 'fork_me'

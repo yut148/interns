@@ -11,12 +11,12 @@
       I18n.fallbacks = true
   %body{class: "#{controller_name}_#{action_name}"}
     .container
-      #header
+      %header#header
         = render 'nav'
         %h1= link_to t('256interns'), root_path
         = render 'alert'
       .row
         .span12= yield
-      #footer
+      %footer#footer
         ©
         = link_to 'FJORD, LLC', 'http://fjord.jp'

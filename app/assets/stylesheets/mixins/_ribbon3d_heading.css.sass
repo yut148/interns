@@ -1,0 +1,50 @@
+=ribbon3d_heading($ribbon_color: gray, $ribbon_width: 400px, $ribbon_border_width: 30px, $ribbon_border_height: 30px, $ribbon_3d_value: 12)
+  position: relative
+  width: $ribbon_width
+  background: $ribbon_color
+  line-height: $ribbon_border_height * 2 !important
+  margin:
+    left: auto !important
+    right: auto !important
+  >span
+    &:before,
+    &:after
+      content: ""
+      width: 0
+      height: 0
+      position: absolute
+      display: block
+      top: 0
+      z-index: 1
+      border:
+        width: $ribbon_border_height $ribbon_border_width
+        style: solid
+        color: $ribbon_color
+    &:before
+      left: $ribbon_border_width * -1
+      border:
+        left-color: transparent
+    &:after
+      right: $ribbon_border_width * -1
+      border:
+        right-color: transparent
+    >span
+      z-index: 3
+      position: relative
+  &:before
+    content: ""
+    position: absolute
+    display: block
+    top: 0
+    left: $ribbon_border_width * -1
+    width: $ribbon_width
+    height: 0
+    border-width: $ribbon_border_height $ribbon_border_width
+    border-style: solid
+    z-index: 2
+    border-color: transparent
+    border-top-color: $ribbon_color + $ribbon_3d_value
+
+
+.ribbon3d_heading
+  +ribbon3d_heading
