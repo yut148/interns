@@ -3,10 +3,13 @@
     .navbar-inner
       .container
         .nav-collapse
-          %h1.brand= link_to t('256interns'), root_path
+          - if params[:controller] == "home"
+            %h1.brand.home_logo= link_to t('256interns'), root_path
+          - else
+            %h1.brand.logo= link_to t('256interns'), root_path
           %ul.nav.pull-right
             - if current_user
-              %li
+              %li.me
                 = link_to current_user do
                   = gravatar_tag current_user, size: 20
                   = current_user.login_name
@@ -19,11 +22,10 @@
                   %i.icon-tasks
                   = t('practices')
             - if current_user
-              %li
+              %li.login.logined
                 = link_to logout_path do
                   %i.icon-off
-                  = t('logout')
             - else
-              %li.login
+              %li.login.logouted
                 = link_to login_path do
                   %i.icon-off
