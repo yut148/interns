@@ -9,14 +9,19 @@
     :javascript
       I18n.locale = '#{I18n.locale}'
       I18n.fallbacks = true
+    :javascript
+      $(function(){
+        $(.simple_form).css3form();
+      });
   %body{class: "#{controller_name}_#{action_name}"}
-    .container
-      %header#header
-        = render 'nav'
-        %h1= link_to t('256interns'), root_path
-        = render 'alert'
-      .row
-        .span12= yield
-      %footer#footer
-        ©
-        = link_to 'FJORD, LLC', 'http://fjord.jp'
+    = render 'alert'
+    = render 'nav'
+    #body
+      #page_title
+        .container
+          %h1= yield :page_title
+      .container
+        = yield
+    %footer#footer
+      ©
+      = link_to 'FJORD, LLC', 'http://fjord.jp'

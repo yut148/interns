@@ -1,0 +1,51 @@
+=balloon_basic($balloon_color: $black, $tale_position: bottom, $border-radius: 20px, $font_size: 14px, $balloon_height: 40px, $font_color: $white, $tale_side_position: $font_size * 1.4)
+  +border-radius($border-radius)
+  font-size: $font_size
+  position: relative
+  background: $balloon_color
+  color: $font_color
+  text-decoration: none
+  +inline-block
+  line-height: $balloon_height
+  padding: 0 1.2em
+  &:after
+    content: ""
+    width: 0
+    height: 0
+    display: block
+    position: absolute
+    border:
+      style: solid
+      color: transparent
+    $tale_short: floor($font_size / 2.2) // 吹き出し尻尾の短い辺のサイズ 小数点以下切り捨て
+    $tale_long: floor($font_size / 1.6) // 吹き出し尻尾の長い辺のサイズ 小数点以下切り捨て
+
+    @if $tale_position == top or $tale_position == bottom
+      // 吹き出しが上or下に配置される場合
+      $tale_height: $tale_long
+      $tale_width: $tale_short
+      border-width: $tale_height $tale_width // 縦長の吹き出し尻尾
+      right: $tale_side_position
+      #{$tale_position}: $tale_height * 2 * -1
+      @if $tale_position == top
+        border-bottom-color: $balloon_color
+      @else
+        border-top-color: $balloon_color
+    @else
+      // 吹き出しが右or左に配置される場合
+      $tale_height: $tale_long
+      $tale_width: $tale_short
+      border-width: $tale_height $tale_width
+      top: ($balloon_height / 2) - $tale_height
+      #{$tale_position}: $tale_width * 2 * -1
+      @if $tale_position == right
+        border-left-color: $balloon_color
+      @else
+        border-right-color: $balloon_color
+
+
+
+
+
+.balloon
+  +balloon_basic($black, bottom, 6px, 14px, 2.4)

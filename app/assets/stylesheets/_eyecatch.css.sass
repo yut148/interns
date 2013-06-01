@@ -1,3 +1,37 @@
 #eyecatch
   height: 500px
   background: $blue
+  position: relative
+  z-index: 1
+  #company_banners
+    position: absolute
+    bottom: 0
+    width: 100%
+    padding: 16px 0
+    .small_button
+      position: absolute
+      right: 0
+      bottom: 0
+    .row
+      position: relative
+    .company
+      a
+        text-decoration: none
+        color: $white
+        +animate
+        &:hover
+          +opacity(70)
+      img
+        width: 100%
+        height: auto
+      .name
+        line-height: 1.3
+        font-size: 12px
+        display: block
+    .link_to_companies
+      position: absolute
+      left: 0
+      top: -54px
+      i
+        margin: 0 0 0 4px
+        font-size: 12px

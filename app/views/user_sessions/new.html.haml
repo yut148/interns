@@ -1,2 +1,4 @@
-%h1= t('sign_in')
-= render 'form', user: @user
+- content_for :page_title do
+  = t('sign_in')
+.container
+  = render 'form', user: @user

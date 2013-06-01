@@ -1,0 +1,31 @@
+=button_basic
+  text-decoration: none
+  +inline-block
+  +border-radius(4px)
+  line-height: 2.4
+  padding: 0 1.4em
+  margin:
+    left: auto
+    right: auto
+
+=small_button($button_color: $pink, $font_size: 12px)
+  +button_basic
+  color: $white
+  background: $button_color
+  font:
+    size: $font_size
+    weight: bold
+
+=large_button($button_color: $pink, $font_size: 22px)
+  +button_basic
+  color: $white
+  background: $button_color
+  font:
+    size: $font_size
+    weight: bold
+
+.large_button
+  +large_button($pink)
+
+.small_button
+  +small_button($orange)

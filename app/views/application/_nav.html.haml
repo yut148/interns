@@ -1,33 +1,29 @@
-%nav#global.navbar
-  .navbar-inner
-    .container
-      .nav-collapse
-        %h1.brand= link_to t('256interns'), root_path
-        %ul.nav.pull-right
-          - if current_user
-            %li
-              = link_to current_user do
-                = gravatar_tag current_user, size: 20
-                = current_user.login_name
-            %li{(controller_name == 'users' and action_name == 'index') ? { class: 'active' } : {}}
-              = link_to users_path do
-                %i.icon-user
-                = t('users')
-            %li{controller_name == 'practices' ? { class: 'active' } : {}}
-              = link_to practices_path do
-                %i.icon-tasks
-                = t('practices')
-          %li{controller_name == 'companies' ? { class: 'active' } : {}}
-            = link_to companies_path do
-              %i.icon-briefcase
-              = t('companies')
-          - if current_user
-            %li
-              = link_to logout_path do
-                %i.icon-off
-                = t('logout')
-          - else
-            %li
-              = link_to login_path do
-                %i.icon-off
-                = t('sign_in')
+%header#header
+  %nav#global.navbar
+    .navbar-inner
+      .container
+        .nav-collapse
+          %h1.brand= link_to t('256interns'), root_path
+          %ul.nav.pull-right
+            - if current_user
+              %li
+                = link_to current_user do
+                  = gravatar_tag current_user, size: 20
+                  = current_user.login_name
+              %li{(controller_name == 'users' and action_name == 'index') ? { class: 'active' } : {}}
+                = link_to users_path do
+                  %i.icon-user
+                  = t('users')
+              %li{controller_name == 'practices' ? { class: 'active' } : {}}
+                = link_to practices_path do
+                  %i.icon-tasks
+                  = t('practices')
+            - if current_user
+              %li
+                = link_to logout_path do
+                  %i.icon-off
+                  = t('logout')
+            - else
+              %li.login
+                = link_to login_path do
+                  %i.icon-off
