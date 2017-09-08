@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903052054) do
+ActiveRecord::Schema.define(version: 20170908010521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,10 @@ ActiveRecord::Schema.define(version: 20170903052054) do
     t.boolean "passed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "task_file_name"
+    t.string "task_content_type"
+    t.integer "task_file_size"
+    t.datetime "task_updated_at"
     t.index ["passed"], name: "index_task_requests_on_passed"
     t.index ["practice_id"], name: "index_task_requests_on_practice_id"
     t.index ["user_id", "practice_id"], name: "index_task_requests_on_user_id_and_practice_id", unique: true

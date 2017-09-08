@@ -31,6 +31,7 @@ gem "sassc-rails"
 gem "ransack"
 gem "rack-user_agent"
 gem "meta-tags"
+gem "paperclip"
 
 group :production, :staging do
   gem "newrelic_rpm"
