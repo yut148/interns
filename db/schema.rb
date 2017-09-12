@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908010521) do
+ActiveRecord::Schema.define(version: 20170911070422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20170908010521) do
     t.text "goal"
     t.integer "category_id"
     t.integer "position"
-    t.boolean "assignment", default: false, null: false
+    t.boolean "has_task", default: false, null: false
     t.index ["category_id"], name: "index_practices_on_category_id"
   end
 
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20170908010521) do
     t.datetime "updated_at"
   end
 
-  create_table "task_requests", force: :cascade do |t|
+  create_table "submissions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "practice_id", null: false
     t.text "content", null: false
@@ -157,10 +157,10 @@ ActiveRecord::Schema.define(version: 20170908010521) do
     t.string "task_content_type"
     t.integer "task_file_size"
     t.datetime "task_updated_at"
-    t.index ["passed"], name: "index_task_requests_on_passed"
-    t.index ["practice_id"], name: "index_task_requests_on_practice_id"
-    t.index ["user_id", "practice_id"], name: "index_task_requests_on_user_id_and_practice_id", unique: true
-    t.index ["user_id"], name: "index_task_requests_on_user_id"
+    t.index ["passed"], name: "index_submissions_on_passed"
+    t.index ["practice_id"], name: "index_submissions_on_practice_id"
+    t.index ["user_id", "practice_id"], name: "index_submissions_on_user_id_and_practice_id", unique: true
+    t.index ["user_id"], name: "index_submissions_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -196,6 +196,6 @@ ActiveRecord::Schema.define(version: 20170908010521) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  add_foreign_key "task_requests", "practices"
-  add_foreign_key "task_requests", "users"
+  add_foreign_key "submissions", "practices"
+  add_foreign_key "submissions", "users"
 end
