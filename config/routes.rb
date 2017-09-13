@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     resources :categories, except: %i(show) do
       resource :position, only: %i(update), controller: "categories/position"
     end
-    resources :submissions, only: %i(index show) do
-      put :passed, on: :member
+    namespace :submissions do
+      resources :passes, only: %i(index show)
+      resources :confirms, only: %i(index show update)
     end
   end
   resources :feeds, only: %i(index)
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
   end
   resources :courses, only: :index
   resources :chat_notices, only: :create
-  get "login"  => "user_sessions#new",     as: :login
+  get "login" => "user_sessions#new", as: :login
   get "logout" => "user_sessions#destroy", as: :logout
   resource :contacts, only: %i(new create)
 
